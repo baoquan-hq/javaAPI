@@ -21,11 +21,14 @@ public class apiCalls {
 	 *  
 	 *
 	 */
+
+	public apiCalls(fctwalletURL,factomdURL) {
+		this.fctwalletURL = fctwalletURL;
+		this.factomdURL = factomdURL;
+	}
 	
-	
-	public static String fctwalletURL="http://localhost:8089";
-	public static String factomdURL="http://localhost:8088";
-	
+	public String fctwalletURL="http://localhost:8089";
+	public String factomdURL="http://localhost:8088";
 
 	
 	/**AddFee  - 
@@ -43,7 +46,7 @@ public class apiCalls {
 	* responseText=AddFee("TranCode1","AddressLabel"); <p>
 	* responseText=AddFee("TranCode1","FAxxxxxxxxxxxxxxxxxxxxxx");
 	**/
-	public static String AddFee(String TransactionName,String AddressName) {
+	public  String AddFee(String TransactionName,String AddressName) {
 		String resp="";
 		
 		try {
@@ -77,7 +80,7 @@ public class apiCalls {
 	* responseText=AddInput("TranCode1","FAxxxxxxxxxxxxxxxxxxxxxx",50000);
 	**/	
 
-	public static String AddInput(String TransactionName,String AddressName,long FactoshiAmount) {
+	public  String AddInput(String TransactionName,String AddressName,long FactoshiAmount) {
 		String resp="";
 		if (FactoshiAmount < 0) {
 			return "{\"Response\":\"Negative Values Not Allowed.\",\"Success\":false}";
@@ -116,7 +119,7 @@ public class apiCalls {
 	* responseText=AddOutput("TranCode1","FAxxxxxxxxxxxxxxxxxxxxxx",50000);
 	**/	
  
-	public static String AddOutput(String TransactionName,String AddressName,long FactoshiAmount) {
+	public  String AddOutput(String TransactionName,String AddressName,long FactoshiAmount) {
 		String resp="";
 		if (FactoshiAmount < 0) {
 			return "{\"Response\":\"Negative Values Not Allowed.\",\"Success\":false}";
@@ -163,7 +166,7 @@ public class apiCalls {
 	* responseText=AddECOutput("TranCode1","FAxxxxxxxxxxxxxxxxxxxxxx",50000);
 	**/	
  
-	public static String AddECOutput(String TransactionName,String AddressName,long FactoshiAmount) {
+	public  String AddECOutput(String TransactionName,String AddressName,long FactoshiAmount) {
 		String resp="";
 		if (FactoshiAmount < 0) {
 			return "{\"Response\":\"Negative Values Not Allowed.\",\"Success\":false}";
@@ -199,7 +202,7 @@ public class apiCalls {
 	* responseText=DeleteTransaction("TranCode1"); 
 	**/	
  
-	public static String DeleteTransaction(String TransactionName) {
+	public  String DeleteTransaction(String TransactionName) {
 		String resp="";
 		
 		try {
@@ -228,7 +231,7 @@ public class apiCalls {
 	* responseText=GenerateFactoidAddress("PrettyName1"); 
 	**/	
  
-	public static String GenerateFactoidAddress(String AddressName) {
+	public  String GenerateFactoidAddress(String AddressName) {
 		String resp="";
 		if (AddressName.length() > 32) {
 			return "{\"Response\":\"Addresses cannot be over 32 bytes\",\"Success\":false}";			
@@ -259,7 +262,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GenerateEntryCreditAddress("PrettyECName1"); 
 	**/	
-	public static String GenerateEntryCreditAddress(String AddressName) {
+	public  String GenerateEntryCreditAddress(String AddressName) {
 		if (AddressName.length() > 32) {
 			return "{\"Response\":\"Addresses cannot be over 32 bytes\",\"Success\":false}";			
 		}
@@ -293,7 +296,7 @@ public class apiCalls {
 	* responseText=GenerateEntryCreditAddress("PrettyName1","FSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
 	**/		
 
-	public static String GenerateAddressFromHumanReadablePrivateKey(String AddressName, String PrivateKey) {
+	public  String GenerateAddressFromHumanReadablePrivateKey(String AddressName, String PrivateKey) {
 		String resp="";
 		if (AddressName.length() > 32) {
 			return "{\"Response\":\"Addresses cannot be over 32 bytes\",\"Success\":false}";			
@@ -325,7 +328,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GenerateEntryCreditAddressFromHumanReadablePrivateKey("PrettyName1","FSxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"); 
 	**/
-	public static String GenerateEntryCreditAddressFromHumanReadablePrivateKey(String AddressName, String PrivateKey) {
+	public  String GenerateEntryCreditAddressFromHumanReadablePrivateKey(String AddressName, String PrivateKey) {
 		String resp="";
 		if (AddressName.length() > 32) {
 			return "{\"Response\":\"Addresses cannot be over 32 bytes\",\"Success\":false}";			
@@ -355,7 +358,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetAddresses(); 
 	**/	
-	public static String GetAddresses() {
+	public  String GetAddresses() {
 		String resp="";
 		
 		try {
@@ -385,7 +388,7 @@ public class apiCalls {
 	* responseText=GetChainHead("11914c19a28a98c57d12f3cce6c32b7944784f4b4781a706c24eb1dc284e2856"); 
 	**/	
 
-	public static String GetChainHead(String chainID) {
+	public  String GetChainHead(String chainID) {
 		String resp="";
 		
 		try {
@@ -421,7 +424,7 @@ public class apiCalls {
 	* responseText=GetDBlock("9204d12f66604a83942a308781098e8405df7551eb4173c5b8817ad53c74d999"); 
 	**/	
 
-	public static String GetDBlock(String keymr) {
+	public  String GetDBlock(String keymr) {
 		String resp="";
 		
 		try {
@@ -446,7 +449,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetDBlock("9204d12f66604a83942a308781098e8405df7551eb4173c5b8817ad53c74d999"); 
 	**/		
-	public static String GetDBlockHead() {
+	public  String GetDBlockHead() {
 		String resp="";
 		
 		try {
@@ -469,7 +472,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetDBlockHeight(); 
 	**/	
-	public static String GetDBlockHeight() {
+	public  String GetDBlockHeight() {
 		String resp="";
 		
 		try {
@@ -502,7 +505,7 @@ public class apiCalls {
 	**/		
 	//GetEBlock 
 	// get eblock by merkle root
-	public static String GetEBlock(String keymr) {
+	public  String GetEBlock(String keymr) {
 		String resp="";
 		
 		try {
@@ -531,7 +534,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetEntry("75668b338e44cb45998594c9cf5f36b52929d85bb616a4052b043da30319956d"); 
 	**/
-	public static String GetEntry(String hash) {
+	public  String GetEntry(String hash) {
 		String resp="";
 		
 		try {
@@ -560,7 +563,7 @@ public class apiCalls {
 	* responseText=GetEntryCreditBalance("EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"); 
 	**/
 
-	public static String GetEntryCreditBalance(String Address) {
+	public  String GetEntryCreditBalance(String Address) {
 		String resp="";
 		
 		try {
@@ -589,7 +592,7 @@ public class apiCalls {
 	* responseText=GetFactoidBalance("sand"); 
 	* responseText=GetFactoidBalance("FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"); 
 	**/
-	public static String GetFactoidBalance(String Address) {
+	public  String GetFactoidBalance(String Address) {
 		String resp="";
 		
 		try {
@@ -618,7 +621,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetFee("testtran"); 
 	**/
-	public static String GetFee(String TransactionName) {
+	public  String GetFee(String TransactionName) {
 		String resp="";
 		
 		try {
@@ -647,7 +650,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText={"Response":"0.000001","Success":true}("testtran"); 
 	**/
-	public static String GetExchangeRate() {
+	public  String GetExchangeRate() {
 		String resp="";
 		
 		try {
@@ -677,7 +680,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetFirstEntry("11914c19a28a98c57d12f3cce6c32b7944784f4b4781a706c24eb1dc284e2856"); 
 	**/	
-	public static String GetFirstEntry(String chainid) {
+	public  String GetFirstEntry(String chainid) {
 		String resp="";
 		String eblockmr=GetChainHead(chainid);
 		// not using json to be clear.  just stripping extra text from responses
@@ -711,7 +714,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=GetProperties() ; 
 	**/	
-	public static String GetProperties() {
+	public  String GetProperties() {
 		String resp="";
 		
 		try {
@@ -742,7 +745,7 @@ public class apiCalls {
 	//  These are transactions being constructed, not ones that have been
 	//  signed and submitted
 
-	public static String GetTransactions() {
+	public  String GetTransactions() {
 		String resp="";
 
 		try {
@@ -771,7 +774,7 @@ public class apiCalls {
 	* responseText=GetProcessedTransactions("sand2"); 
 	* responseText=GetProcessedTransactions("FA2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX"); 
 	**/	
-	public static String GetProcessedTransactions(String Address) {
+	public  String GetProcessedTransactions(String Address) {
 		String resp="";
 		String postData="";
 		
@@ -804,7 +807,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=NewTransaction("testtran"); 
 	**/	
-	public static String NewTransaction(String TransactionName) {
+	public  String NewTransaction(String TransactionName) {
 		String resp="";
 		
 		try {
@@ -830,7 +833,7 @@ public class apiCalls {
 	* responseText=SignTransaction("testtran"); 
 	**/	
 
-	public static String SignTransaction(String TransactionName) {
+	public  String SignTransaction(String TransactionName) {
 		String resp="";
 	
 		try {
@@ -857,7 +860,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=SubmitTransaction("testtran"); 
 	**/	
-	public static String SubmitTransaction(String TransactionName) {
+	public  String SubmitTransaction(String TransactionName) {
 		String resp="";
 	
 		try {
@@ -882,7 +885,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=verifyAddress("FA2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX"); 
 	**/	
-	public static String verifyAddress(String Address) {
+	public  String verifyAddress(String Address) {
 		String resp="";
 		
 		try {
@@ -919,7 +922,7 @@ public class apiCalls {
 	* responseText=BuyEntryCreditsFullTransaction("FA35Ky2jEMwhFqXhvARBKGryUzRmxGoXt8RM2fDsVXws2W2tXm5J","EC2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX",10.5); 
 	**/	
 
-	public static String BuyEntryCreditsFullTransaction(String FromAddress,String ToAddress,Double Amount) {
+	public  String BuyEntryCreditsFullTransaction(String FromAddress,String ToAddress,Double Amount) {
 		if (Amount < 0) {
 			return "{\"Response\":\"Negative Values Not Allowed.\",\"Success\":false}";
 		}
@@ -976,7 +979,7 @@ public class apiCalls {
 	* Example:<p>
 	* responseText=SendFactoidsFullTransaction("FA35Ky2jEMwhFqXhvARBKGryUzRmxGoXt8RM2fDsVXws2W2tXm5J","FA2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX",10.5); 
 	**/	
-	public static String SendFactoidsFullTransaction(String FromAddress,String ToAddress,Double Amount) {
+	public  String SendFactoidsFullTransaction(String FromAddress,String ToAddress,Double Amount) {
 		if (Amount < 0) {
 			return "{\"Response\":\"Negative Values Not Allowed.\",\"Success\":false}";
 		}
@@ -1034,7 +1037,7 @@ public class apiCalls {
 	* responseText=ComposeChainCommit("EC2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX",extids,"here is the body of your entry"); 
 	**/		
 	
-	public static String ComposeChainCommit(String name, String[] extids,String data) {
+	public  String ComposeChainCommit(String name, String[] extids,String data) {
 		String resp="";		
 		Chain c=new Chain();	
 		Entry e=new  Entry();	
@@ -1110,7 +1113,7 @@ public class apiCalls {
 	* responseText=ComposeChainCommit("EC2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX",extids,"here is the body of your entry"); 
 	**/		
 	
-	public static String ComposeChainCommitLite(String name, String[] extids,String data) {
+	public  String ComposeChainCommitLite(String name, String[] extids,String data) {
 		String resp="";		
 		Chain c=new Chain();	
 		Entry e=new  Entry();	
@@ -1187,7 +1190,7 @@ public class apiCalls {
 	* 
 	* responseText=ComposeEntryCommit("EC2RYZzZxJvu2xT6JdKrVLjCMjXX5pmYyNMJG4tLoSyihvTemwyX",extids,"11914c19a28a98c57d12f3cce6c32b7944784f4b4781a706c24eb1dc284e2856","here is the body of your entry"); 
 	**/	
-  public static String ComposeEntryCommit(String name,String[] extids,String chainID,String data)  {
+  public  String ComposeEntryCommit(String name,String[] extids,String chainID,String data)  {
 	  	String resp="";
 
 		byte[] postData=new byte[0];
@@ -1251,7 +1254,7 @@ public class apiCalls {
 
 	* responseText=RevealChainOrEntry(e,"Chain"); 
 	**/	
-  private static String RevealChainOrEntry(Entry e,String RevealType) {
+  private  String RevealChainOrEntry(Entry e,String RevealType) {
 		String resp="";
 		int i;
 		int extidlength=0;
